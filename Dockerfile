@@ -1,20 +1,16 @@
-FROM python:3.8-slim-buster
+FROM python:3.9.2-buster
 
-ARG twilio_auth_key
-ENV start_date
-ENV end_date
-ENV phone_number
-ENV interval
-ENV county_code
+ARG TWILIO_AUTH
 
 WORKDIR /app
 
 COPY requirements.txt requirements.txt
 
 RUN python -m pip install -r requirements.txt
+RUN touch scan_job.log
 
 COPY src/scan_job.py scan_job.py
 
-ENV TWILIO_AUTH_KEY=$twilio_auth_key
+ENV TWILIO_AUTH_KEY=TWILIO_AUTH
 
-CMD ["python3", "scan_job.py", "--start-date", start_date, "--end-date", end_date, "--phone-number", phone_number, "--county-code", county_code]
+ENTRYPOINT ["python3", "scan_job.py"]

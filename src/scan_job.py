@@ -60,16 +60,16 @@ def initialize_args():
 
 
 def configure_logger():
-    logging.basicConfig(filename='./scan_job.log',
-                        filemode='a',
-                        format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
-                        datefmt='%H:%M:%S',
-                        level=logging.INFO)
+    logging.basicConfig(
+        filemode='a',
+        format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
+        datefmt='%H:%M:%S',
+        level=logging.INFO)
 
 
 def main():
     twilio_auth_key = os.environ['TWILIO_AUTH_KEY']
-    dev_profile_enabled = os.environ['RUN_PROFILE'] == 'dev'
+    dev_profile_enabled = 'RUN_PROFILE' in os.environ and os.environ['RUN_PROFILE'] == 'dev'
 
     args = initialize_args()
 
