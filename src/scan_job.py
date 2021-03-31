@@ -76,12 +76,12 @@ def main():
     configure_logger()
     logging.info(f'Starting execution with arguments: start {args.start_date}, end: {args.end_date}, '
                  f'phone_number: {args.dest_phone_number}')
-
+    notified = False
     while True:
         dates = fetch_available_days(args.start_date, args.end_date, args.county_code)
         if len(dates) > 0:
             notify(dates, twilio_auth_key, args.dest_phone_number, dev_profile_enabled)
-            break
+            input("Press the <ENTER> key to continue...")
         logging.info('Still going...')
         time.sleep(args.interval)
 
