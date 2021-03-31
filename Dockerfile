@@ -9,8 +9,7 @@ COPY requirements.txt requirements.txt
 RUN python -m pip install -r requirements.txt
 RUN touch scan_job.log
 
-COPY src/scan_job.py scan_job.py
 
 ENV TWILIO_AUTH_KEY=TWILIO_AUTH
 
-ENTRYPOINT ["python3", "scan_job.py"]
+# ENTRYPOINT ["python3", "scan_job.py"]
