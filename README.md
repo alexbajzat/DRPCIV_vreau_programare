@@ -24,5 +24,3 @@ docker run -it -t drpciv-monitor --start-date={when_to_start_looking} --end-date
 #### Or...
 just deploy it to https://cloud.digitalocean.com/
 
- --start-date=2021-04-10 --end-date=2021-04-20 --phone-number=+40749379976
-
