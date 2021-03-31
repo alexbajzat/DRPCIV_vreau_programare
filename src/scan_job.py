@@ -81,7 +81,8 @@ def main():
         dates = fetch_available_days(args.start_date, args.end_date, args.county_code)
         if len(dates) > 0:
             notify(dates, twilio_auth_key, args.dest_phone_number, dev_profile_enabled)
-            time.sleep(60 * 60 * 3)
+            logging.info('Mission accomplished, sleeping for 2 hours')
+            time.sleep(60 * 60 * 2)
 
         logging.info('Still going...')
         time.sleep(args.interval)
