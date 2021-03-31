@@ -85,8 +85,6 @@ def main():
         logging.info('Still going...')
         time.sleep(args.interval)
 
-    logging.info('Done, bye.')
-
 
 if __name__ == "__main__":
     main()
