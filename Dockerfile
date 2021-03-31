@@ -12,4 +12,4 @@ COPY src/scan_job.py scan_job.py
 
 ENV TWILIO_AUTH_KEY=TWILIO_AUTH
 
-# ENTRYPOINT ["python3", "scan_job.py"]
+ENTRYPOINT ["python3", "scan_job.py"]
