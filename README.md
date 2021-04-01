@@ -3,7 +3,7 @@
 ### Yay, got my booking
 You've just booked a day for your theoretical driving exam, but it's a month from now... wtf ?
 
-No worries, usually there are a free slots which appear now and then, but it's a pain in the ass to keep 
+No worries, usually there are free slots which appear now and then, but it's a pain in the ass to keep 
 an eye on them all the time...or is it? 
 
 ### How the f it works
