@@ -24,3 +24,5 @@ docker run -it -t drpciv-monitor --start-date={when_to_start_looking} --end-date
 #### Or...
 just deploy it to https://cloud.digitalocean.com/
 
+#### Sit back and relax, you will get a message when a slot becomes available in that interval
+
