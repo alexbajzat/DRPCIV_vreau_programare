@@ -3,7 +3,7 @@
 ### Yay, got my booking
 You've just booked a day for your theoretical driving exam, but it's a month from now... wtf ?
 
-No worries, usually there are a free slots which appear now and then, but it's a pain in the ass to keep 
+No worries, usually there are free slots which appear now and then, but it's a pain in the ass to keep 
 an eye on them all the time...or is it? 
 
 ### How the f it works
@@ -24,5 +24,5 @@ docker run -it -t drpciv-monitor --start-date={when_to_start_looking} --end-date
 #### Or...
 just deploy it to https://cloud.digitalocean.com/
 
- --start-date=2021-04-10 --end-date=2021-04-20 --phone-number=+40749379976
+#### Sit back and relax, you will get a message when a slot becomes available in that interval
 
