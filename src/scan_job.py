@@ -10,14 +10,16 @@ import logging
 BASE_URL = 'https://www.drpciv.ro/drpciv-booking-api/getAvailableDaysForSpecificService/1'
 ACCOUNT_SID = "AC52d3b8514449d0a9d485654116b36af7"
 
+reported_dates = set()
+
 
 def fetch_available_days(start_date, end_date, county_code):
     request_url = BASE_URL + f'/{county_code}'
     response = json.loads(requests.get(request_url).text)
-    return parse_available_dates(response, start_date, end_date)
+    return process_available_dates(response, start_date, end_date)
 
 
-def parse_available_dates(dates, start_date, end_date):
+def process_available_dates(dates, start_date, end_date):
     if dates is None:
         return
     dates_formatted = []
@@ -26,8 +28,9 @@ def parse_available_dates(dates, start_date, end_date):
         date = datetime.strptime(trimmed_date, '%Y-%m-%d')
         start_datetime = datetime.strptime(start_date, '%Y-%m-%d')
         end_datetime = datetime.strptime(end_date, '%Y-%m-%d')
-        if start_datetime <= date <= end_datetime:
-            dates_formatted.append(f'available date: {trimmed_date}')
+        if start_datetime <= date <= end_datetime and trimmed_date not in reported_dates:
+            dates_formatted.append(trimmed_date)
+            reported_dates.add(trimmed_date)
 
     return set(dates_formatted)
 
@@ -81,11 +84,9 @@ def main():
         dates = fetch_available_days(args.start_date, args.end_date, args.county_code)
         if len(dates) > 0:
             notify(dates, twilio_auth_key, args.dest_phone_number, dev_profile_enabled)
-            logging.info('Mission accomplished, sleeping for 2 hours')
-            time.sleep(60 * 60 * 2)
 
         logging.info('Still going...')
-        time.sleep(args.interval)
+        time.sleep(int(args.interval))
 
 
 if __name__ == "__main__":
