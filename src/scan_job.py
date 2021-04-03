@@ -30,7 +30,7 @@ def process_available_dates(dates, start_date, end_date):
         end_datetime = datetime.strptime(end_date, '%Y-%m-%d')
         if start_datetime <= date <= end_datetime and trimmed_date not in reported_dates:
             dates_formatted.append(trimmed_date)
-            reported_dates.add(trimmed_date)
+            # reported_dates.add(trimmed_date)
 
     return set(dates_formatted)
 
