@@ -8,8 +8,6 @@ import time
 import logging
 
 BASE_URL = 'https://www.drpciv.ro/drpciv-booking-api/getAvailableDaysForSpecificService/1'
-ACCOUNT_SID = "AC52d3b8514449d0a9d485654116b36af7"
-
 reported_dates = set()
 
 
@@ -35,12 +33,12 @@ def process_available_dates(dates, start_date, end_date):
     return set(dates_formatted)
 
 
-def notify(dates, auth_token, dest_phone_number, dev=False):
+def notify(dates, auth_token, account_sid, dest_phone_number, dev=False):
     if dev:
         logging.info(f'Mocking Send: {str(dates)} to {dest_phone_number}')
         return
 
-    client = Client(ACCOUNT_SID, auth_token)
+    client = Client(account_sid, auth_token)
     message = client.messages.create(
         to=dest_phone_number,
         from_="+17146778785",
@@ -72,6 +70,7 @@ def configure_logger():
 
 def main():
     twilio_auth_key = os.environ['TWILIO_AUTH_KEY']
+    account_sid = os.environ['TWILIO_ACCOUNT_SID']
     dev_profile_enabled = 'RUN_PROFILE' in os.environ and os.environ['RUN_PROFILE'] == 'dev'
 
     args = initialize_args()
@@ -83,7 +82,7 @@ def main():
     while True:
         dates = fetch_available_days(args.start_date, args.end_date, args.county_code)
         if len(dates) > 0:
-            notify(dates, twilio_auth_key, args.dest_phone_number, dev_profile_enabled)
+            notify(dates, twilio_auth_key, account_sid, args.dest_phone_number, dev_profile_enabled)
 
         logging.info('Still going...')
         time.sleep(int(args.interval))
