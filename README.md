@@ -15,7 +15,7 @@ Go get yourself some of that sweet Twilio trial sms https://www.twilio.com/sms. 
 docker image build --build-arg TWILIO_AUTH={your_twilio_auth_key} --build-arg TWILIO_SID={your_twilio_account_sid} -t drpciv-monitor .
 
 docker run -it -t drpciv-monitor --start-date={when_to_start_looking} --end-date={until_when} 
---phone-number={your_phone_number}
+--phone-number={your_phone_number} --twilio-phone-number={number-from-twilio}
 ###### Params
 --start-date, --end-date - date of format yyyy-mm-dd
 
