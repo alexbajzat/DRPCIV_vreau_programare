@@ -25,7 +25,7 @@ class ScanJob(object):
         self.__logger = logging.getLogger(__name__)
         self.__notify_client = NotifyClient(twilio_number)
         self.__dest_phone = dest_phone
-        self.__scheduler_helper = SchedulerHelper(retain_period_seconds=40)
+        self.__scheduler_helper = SchedulerHelper()
         self.__dev_profile_enabled = dev_profile_enabled
         self.__sleep_interval = sleep_interval
         self.__start_date = start_date
