@@ -74,7 +74,7 @@ def initialize_args():
     parser = argparse.ArgumentParser(description='Get available DRPCIV dates between {start_date} and {end_date} - '
                                                  'format yyyy-mm-dd')
     parser.add_argument('--start_date', dest='start_date', default='2021-05-27')
-    parser.add_argument('--end_date', dest='end_date', default='2021-07-07')
+    parser.add_argument('--end_date', dest='end_date', default='2021-06-17')
     parser.add_argument('--county_code', dest='county_code', help='code specific for county to search in',
                         default=12)
     parser.add_argument('--phone_number', dest='dest_phone_number', help='phone number to send the notification to',
