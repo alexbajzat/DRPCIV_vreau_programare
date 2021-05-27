@@ -73,13 +73,13 @@ class ScanJob(object):
 def initialize_args():
     parser = argparse.ArgumentParser(description='Get available DRPCIV dates between {start_date} and {end_date} - '
                                                  'format yyyy-mm-dd')
-    parser.add_argument('--start-date', dest='start_date')
-    parser.add_argument('--end-date', dest='end_date')
-    parser.add_argument('--county-code', dest='county_code', help='code specific for county to search in',
+    parser.add_argument('--start_date', dest='start_date')
+    parser.add_argument('--end_date', dest='end_date')
+    parser.add_argument('--county_code', dest='county_code', help='code specific for county to search in',
                         default=12)
-    parser.add_argument('--phone-number', dest='dest_phone_number', help='phone number to send the notification to',
+    parser.add_argument('--phone_number', dest='dest_phone_number', help='phone number to send the notification to',
                         default=12)
-    parser.add_argument('--twilio-phone-number', dest='twilio_phone_number', help='phone number from twilio',
+    parser.add_argument('--twilio_phone_number', dest='twilio_phone_number', help='phone number from twilio',
                         default="+17146778785")
     parser.add_argument('--interval', dest='interval', help='time to sleep between searches (in seconds)',
                         default=60 * 10)
