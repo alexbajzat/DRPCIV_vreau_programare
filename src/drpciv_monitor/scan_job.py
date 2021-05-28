@@ -78,7 +78,7 @@ def initialize_args():
     parser.add_argument('--county_code', dest='county_code', help='code specific for county to search in',
                         default=12)
     parser.add_argument('--phone_number', dest='dest_phone_number', help='phone number to send the notification to',
-                        default='+40743773521')
+                        default='')
     parser.add_argument('--twilio_phone_number', dest='twilio_phone_number', help='phone number from twilio',
                         default="+12242681859")
     parser.add_argument('--interval', dest='interval', help='time to sleep between searches (in seconds)',
